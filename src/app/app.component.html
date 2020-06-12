@@ -27,7 +27,13 @@
   Lorem Ip
 </p>
 
-<h2>Components</h2>
-<app-menu></app-menu>
+<div [class.background-colored]="true">
+  <h2>List of Products</h2>
+  <app-menu></app-menu>
 
-<app-product-list></app-product-list>
+  <app-product-list></app-product-list>
+</div>
+
+<h2>Counter Incrementor</h2>
+
+<app-counter-incrementor></app-counter-incrementor>

@@ -1,8 +1,12 @@
-<h3>Product List</h3>
+<div [class.background-colored]="true">
+  <h3>Product List</h3>
 
-<ul>
-  <li *ngFor="let product of products">
-    <h4>Product {{product.id}}</h4>
-    <app-product [product]="product"></app-product>
-  </li>
-</ul>
+  <div *ngIf="selectedProduct" [class.background-colored-selected-product]="true"> You have
+    selected {{selectedProduct.name}}</div>
+  <ul>
+    <li *ngFor="let product of products">
+      <h4>Product {{product.id}}</h4>
+      <app-product (eventEmitter)="updateSelectedProduct($event)" [product]="product"></app-product>
+    </li>
+  </ul>
+</div>

@@ -14,6 +14,12 @@ export class ProductListComponent implements OnInit {
 
   }
 
+  private _selectedProduct: Product;
+
+  get selectedProduct(): Product {
+    return this._selectedProduct;
+  }
+
   private _products: Product[];
 
   get products(): Product[] {
@@ -27,4 +33,7 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  updateSelectedProduct(selectedProduct: Product) {
+    this._selectedProduct = selectedProduct;
+  }
 }
