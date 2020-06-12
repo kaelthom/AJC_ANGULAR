@@ -1,0 +1,8 @@
+<h3>Product List</h3>
+
+<ul>
+  <li *ngFor="let product of products">
+    <h4>Product {{product.id}}</h4>
+    <app-product [product]="product"></app-product>
+  </li>
+</ul>
