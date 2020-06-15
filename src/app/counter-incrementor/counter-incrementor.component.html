@@ -1,0 +1,7 @@
+<p>counter-incrementor works!</p>
+Total : {{total}} <br>
+
+<div *ngFor="let in of [].constructor(5) ;let i = index">
+  Counter {{i}} :
+  <app-counter (eventEmitter)="updateTotalValue($event)"></app-counter>
+</div>
