@@ -1,10 +1,11 @@
 <div [class.background-colored]="true">
   <h3>Product List</h3>
+  <input (change)="getFilteredList()" [(ngModel)]="productNameFilter" placeholder="Filter by Name" type="text">
 
   <div *ngIf="selectedProduct" [class.background-colored-selected-product]="true"> You have
     selected {{selectedProduct.name}}</div>
   <ul>
-    <li *ngFor="let product of products">
+    <li *ngFor="let product of getFilteredList()">
       <h4>Product {{product.id}}</h4>
       <app-product (eventEmitter)="updateSelectedProduct($event)" [product]="product"></app-product>
     </li>

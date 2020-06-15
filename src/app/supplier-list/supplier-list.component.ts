@@ -7,6 +7,8 @@ import {Supplier} from '../model/Supplier';
   styleUrls: ['./supplier-list.component.css']
 })
 export class SupplierListComponent implements OnInit {
+  companyNameFilter: string;
+
   constructor() {
     this._suppliers = new Array<Supplier>();
     this._suppliers[0] = new Supplier(0, '123456789123', 'accountNumberOk');
@@ -22,4 +24,9 @@ export class SupplierListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getFilteredList() {
+    return this.companyNameFilter ?
+      this.suppliers.filter(supplier => supplier.companyName.includes(this.companyNameFilter)) :
+      this.suppliers;
+  }
 }

@@ -14,6 +14,16 @@ export class ProductListComponent implements OnInit {
 
   }
 
+  private _productNameFilter: string;
+
+  get productNameFilter(): string {
+    return this._productNameFilter;
+  }
+
+  set productNameFilter(value: string) {
+    this._productNameFilter = value;
+  }
+
   private _selectedProduct: Product;
 
   get selectedProduct(): Product {
@@ -35,5 +45,11 @@ export class ProductListComponent implements OnInit {
 
   updateSelectedProduct(selectedProduct: Product) {
     this._selectedProduct = selectedProduct;
+  }
+
+  getFilteredList() {
+    return this._productNameFilter ?
+      this.products.filter(product => product.name.includes(this._productNameFilter)) :
+      this.products;
   }
 }
