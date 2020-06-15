@@ -1,0 +1,10 @@
+<div [class.background-colored]="true">
+  <h3>Supplier List</h3>
+
+  <ul>
+    <li *ngFor="let supplier of suppliers">
+      <h4>Supplier {{supplier.id}} : {{supplier.companyName | uppercase}}
+        - {{supplier.bankAccountNumber | verifyAccountNumber:12}}</h4>
+    </li>
+  </ul>
+</div>
