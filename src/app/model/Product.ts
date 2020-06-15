@@ -3,12 +3,24 @@ import {Supplier} from './Supplier';
 export class Product {
   id: number;
   private description: string;
-  private price: number;
-  private promo;
 
-  constructor(id: number, name: string) {
+  constructor(id?: number, name?: string, price?: number, promo?: number) {
     this.id = id;
     this._name = name;
+    this._price = price;
+    this._promo = promo;
+  }
+
+  private _price: number;
+
+  get price(): number {
+    return this._price;
+  }
+
+  private _promo: number;
+
+  get promo(): number {
+    return this._promo;
   }
 
   private _name: string;
@@ -40,5 +52,4 @@ export class Product {
   set supplier(value: Supplier) {
     this._supplier = value;
   }
-
 }

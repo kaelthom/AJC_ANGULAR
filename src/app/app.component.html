@@ -1,4 +1,4 @@
-<div [ngClass]="theColor">Welcome</div>
+<h1 [ngClass]="theColor">Welcome</h1>
 
 <h2>Basics</h2>
 <label>
@@ -31,8 +31,8 @@
   <h2>List of Products</h2>
   <app-menu></app-menu>
 
-  <app-product-list></app-product-list>
-  <app-supplier-list></app-supplier-list>
+  <app-product-list [_products]="products"></app-product-list>
+  <app-supplier-list [_suppliers]="suppliers"></app-supplier-list>
 </div>
 
 <h2>Counter Incrementor</h2>

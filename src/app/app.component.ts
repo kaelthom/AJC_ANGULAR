@@ -1,5 +1,9 @@
 import {Component} from '@angular/core';
 import {Person} from './model/person';
+import {ProductServiceService} from './service/product-service.service';
+import {Product} from './model/Product';
+import {Supplier} from './model/Supplier';
+import {SupplierService} from './service/supplier.service';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +14,24 @@ export class AppComponent {
   title = 'angularbaseproject';
   theColor = 'blue';
   anonymous = new Person(1, 'John', 'Doe');
+
+  constructor(productService: ProductServiceService, supplierService: SupplierService) {
+    productService.findAll().then(result => this._products = result);
+    supplierService.findAll().then(result => this._suppliers = result);
+
+  }
+
+  private _suppliers: Array<Supplier>;
+
+  get suppliers(): Array<Supplier> {
+    return this._suppliers;
+  }
+
+  private _products: Array<Product>;
+
+  get products(): Array<Product> {
+    return this._products;
+  }
 
   toggleColor() {
     if (this.theColor === 'blue') {

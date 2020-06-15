@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Supplier} from '../model/Supplier';
 
 @Component({
@@ -10,11 +10,9 @@ export class SupplierListComponent implements OnInit {
   companyNameFilter: string;
 
   constructor() {
-    this._suppliers = new Array<Supplier>();
-    this._suppliers[0] = new Supplier(0, '123456789123', 'accountNumberOk');
-    this._suppliers[1] = new Supplier(1, '1234567891235', 'accountNumberNotOk');
   }
 
+  @Input()
   private _suppliers: Supplier[];
 
   get suppliers(): Supplier[] {

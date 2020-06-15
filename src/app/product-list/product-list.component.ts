@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Product} from '../model/Product';
+import {ProductServiceService} from '../service/product-service.service';
 
 @Component({
   selector: 'app-product-list',
@@ -7,11 +8,11 @@ import {Product} from '../model/Product';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-  constructor() {
-    this._products = new Array<Product>();
-    this._products[0] = new Product(0, 'Product1');
-    this._products[1] = new Product(1, 'Product2');
+  newProduct: Product = new Product();
+  private productService: ProductServiceService;
 
+  constructor(productService: ProductServiceService) {
+    this.productService = productService;
   }
 
   private _productNameFilter: string;
@@ -30,6 +31,7 @@ export class ProductListComponent implements OnInit {
     return this._selectedProduct;
   }
 
+  @Input()
   private _products: Product[];
 
   get products(): Product[] {
@@ -51,5 +53,9 @@ export class ProductListComponent implements OnInit {
     return this._productNameFilter ?
       this.products.filter(product => product.name.includes(this._productNameFilter)) :
       this.products;
+  }
+
+  addProduct() {
+    this.productService.add(this.newProduct).then(result => this._products = result);
   }
 }

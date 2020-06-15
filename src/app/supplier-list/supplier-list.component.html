@@ -1,7 +1,9 @@
 <div [class.background-colored]="true">
-  <h3>Supplier List</h3> <label>
-  <input (change)="getFilteredList()" [(ngModel)]="companyNameFilter" placeholder="Filter by Name" type="text">
-</label>
+  <h3>Supplier List : <label>
+    <input [(ngModel)]="companyNameFilter" placeholder="Filter by Name"
+           type="text">
+  </label></h3>
+
 
   <ul>
     <li *ngFor="let supplier of getFilteredList()">
